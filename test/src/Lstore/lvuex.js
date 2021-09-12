@@ -10,6 +10,26 @@ class Store {
 
         this._actions = options.actions
 
+        this._werappedFetters = options.getters;
+
+        // 定义computed选项
+        const computed = {}
+        this.getters = {}
+        const store = this;
+        Object.keys(this._werappedFetters).forEach(key => {
+            // 获取用户定义的getter
+            const fn = store._werappedFetters[key]
+            // 转换为computed可以使用无参形式
+            computed[key] = function(){
+                return fn(store.state)
+            }
+
+            // 为getters定义只读属性
+            Object.defineProperty(store.getters, key, {
+                get: () => store._vm[key]
+            })
+        })
+
         // api
         // 用户传入的state选项应该是响应式的
         // Vue吧data里的数据代理到了vue实例上
@@ -19,7 +39,8 @@ class Store {
                     // 不希望¥¥state被代理，所以加¥¥
                     $$state: options.state
                 }
-            }
+            },
+            computed: computed
         })
 
         this.commit = this.commit.bind(this)
