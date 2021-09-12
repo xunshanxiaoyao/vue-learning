@@ -26,5 +26,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 <!-- router-view 嵌套 -->
-
+    1.router-view的深度标记
+    2.路由匹配时获取代表深度层级的数组
 <!-- vuex模块化 -->
