@@ -3,6 +3,7 @@ import Vue from 'vue'
 import VueRouter from './lvue-router.js'
 import Home from '../views/Home.vue'
 
+// VueRouter.install(Vue)
 Vue.use(VueRouter)
 
 // 路由映射表

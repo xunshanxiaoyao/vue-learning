@@ -64,9 +64,17 @@ VueRouter.install = function (_Vue) {
             // 根据Url的hash部分 动态匹配这个组件
             // window.location.hash
             // this.$router.current this.$router.$option.routes
-            console.log('this.$router.current', this.$router.current)
-            console.log( ' this.$router.$option.routes',  this.$router.$options.routes)
-            return h('div', 'reouter-view')
+            // console.log('this.$router.current', this.$router.current)
+            // console.log('this.$router.$option.routes',  this.$router.$options.routes)
+            let component  = null;
+            const route = this.$router.$options.routes.find((route) => {
+                return route.path === this.$router.current
+            })
+            if (route) {
+                component = route.component
+            }
+            // console.log(component)
+            return h(component)
         }
     })
 }

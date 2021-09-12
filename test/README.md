@@ -22,3 +22,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+
+<!-- router-view 嵌套 -->
+
+<!-- vuex模块化 -->
